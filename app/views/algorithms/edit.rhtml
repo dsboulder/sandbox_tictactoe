@@ -1,0 +1,14 @@
+<h1>Editing algorithm</h1>
+
+<%= error_messages_for :algorithm %>
+
+<% form_for(:algorithm, :url => algorithm_path(@algorithm), :html => { :method => :put, :onsubmit => "document.getElementById('algorithm_code_hidden').value = algorithm_code.getCode();" }) do |f| %>
+	<%= render :partial => "form", :object => f %>
+  <p>
+    <%= submit_tag "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', algorithm_path(@algorithm) %>
+<%#= link_to 'Destroy', algorithm_path(@algorithm), :confirm => 'Are you sure?', :method => :delete %> | 
+<%= link_to 'Back', algorithms_path %>

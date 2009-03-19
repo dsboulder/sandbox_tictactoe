@@ -1,0 +1,35 @@
+<%= acts_as_runnable_code_syntax_highlight_for("Algorithm", :controller => "syntax_highlight") %>
+
+<p>
+  <b>Name</b><br />
+  <%= form.text_field :name %>
+</p>
+
+<p>
+  <b>Author</b><br />
+  <%= form.text_field :author %>
+</p>
+
+<p>
+  <b>Password</b> (must match the one you created with when editing)<br />
+  <%= form.password_field :password, :value => "" %>
+</p>
+
+  <p>
+    <b>Code</b><br />
+    <%= form.text_area :code, :rows => 20, :cols => 120, :class => "codepress ruby linenumbers-off" %><br/>
+	<%= check_box_tag "codepress_box", "1", true, :onchange => "algorithm_code.toggleEditor();" %> Use Codepress Syntax Highlighting
+  </p>
+
+<%= form.hidden_field :code, :id => "algorithm_code_hidden"  %>
+
+<p>
+	<b>API</b><br/>
+	<i>Your code runs in the context of the "Board", when the game system requires that your algorithm make a move.  The following methods are available:</i><br/>
+	<code>moves()</code> - returns an array of MoveWrapper objects which have the methods (x_pos, y_pos, is_x?)<br/>
+	<code>make_move!(x,y)</code> - make a move. This must be called exactly once.<br/>
+	<code>move_matrix()</code> - returns a matrix of the board moves like so [["x","",""],["o","","o"],["x","x",""]]<br/>
+	<code>turn()</code> - returns either "x" or "o" depending on whose turn it is (it is always your turn)<br/>
+	<code>log_info(message), log_error(message)</code> - display logging information in the board history<br/>
+</p>
+	

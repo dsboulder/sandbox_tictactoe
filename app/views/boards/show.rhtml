@@ -1,0 +1,19 @@
+<p>
+  <b>Algorithm "X":</b>
+  <%=h @board.algorithm_x ? @board.algorithm_x.display_name : "human" %>
+</p>
+
+<p>
+  <b>Algorithm "O":</b>
+  <%=h @board.algorithm_o ? @board.algorithm_o.display_name : "human" %>
+</p>
+
+<%= render :partial => "board", :object => @board %>
+
+<p>
+  <b>History:</b>
+  <%=h(@board.history).gsub("\n", "<br/>") %>
+</p>
+
+
+<%= link_to 'Back', boards_path %>

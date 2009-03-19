@@ -1,0 +1,25 @@
+<h1>Listing algorithms</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Author</th>
+    <th>Created</th>
+    <th>Updated</th>
+  </tr>
+  
+<% for algorithm in @algorithms %>
+  <tr>
+    <td><%=h algorithm.name %></td>
+    <td><%=h algorithm.author %></td>
+    <td><%=time_ago_in_words algorithm.created_at %> ago</td>
+    <td><%=time_ago_in_words algorithm.updated_at %> ago</td>
+    <td><%= link_to 'Show', algorithm_path(algorithm) %></td>
+    <td><%= link_to 'Edit', edit_algorithm_path(algorithm) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New algorithm', new_algorithm_path %>

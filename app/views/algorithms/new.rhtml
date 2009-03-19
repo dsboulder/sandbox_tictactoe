@@ -1,0 +1,12 @@
+<h1>New algorithm</h1>
+
+<%= error_messages_for :algorithm %>
+
+<% form_for(:algorithm, :url => algorithms_path, :html => {:onsubmit => "document.getElementById('algorithm_code_hidden').value = algorithm_code.getCode();"}) do |f| %>
+	<%= render :partial => "form", :object => f %>
+  <p>
+    <%= submit_tag "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', algorithms_path %>

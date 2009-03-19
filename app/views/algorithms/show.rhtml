@@ -1,0 +1,25 @@
+<%= stylesheet_link_tag "uv/blackboard" %>
+
+<p>
+  <b>Name:</b>
+  <%=h @algorithm.name %>
+</p>
+
+<p>
+  <b>Author:</b>
+  <%=h @algorithm.author %>
+</p>
+
+<p>
+  <b>Code:</b><br/>
+  <%#=h(@algorithm.code).gsub("\n","<br/>").gsub(" ", "&nbsp;") %>
+	<%= Uv.parse( @algorithm.code, "xhtml", "ruby", false, "blackboard") %>
+</p>
+
+<% form_for(:board, Board.new, :url => boards_path, :html => {:id => "board_form"}) do |f| %>
+	<%= f.hidden_field :algorithm_x_id %>
+	<%= f.hidden_field :algorithm_o_id %>
+<% end %>
+
+<%= link_to 'Edit', edit_algorithm_path(@algorithm) %> | <%= link_to_function "Play against X", "document.getElementById('board_algorithm_x_id').value = #{@algorithm.id}; document.getElementById('board_form').submit(); "  %> | <%= link_to_function "Play against O", "document.getElementById('board_algorithm_o_id').value = #{@algorithm.id}; document.getElementById('board_form').submit(); "  %> | 
+<%= link_to 'Back', algorithms_path %>

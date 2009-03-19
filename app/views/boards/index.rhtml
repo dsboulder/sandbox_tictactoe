@@ -1,0 +1,28 @@
+<h1>Last 20 games</h1>
+
+<table>
+  <tr>
+    <th>Algorithm "X"</th>
+    <th>Algorithm "O"</th>
+    <th>Game Over?</th>
+    <th>Winner</th>
+    <th>History</th>
+    <th>Created</th>
+  </tr>
+  
+<% for board in @boards %>
+  <tr>
+    <td><%=h board.algorithm_x ? board.algorithm_x.display_name : "human" %></td>
+    <td><%=h board.algorithm_o ? board.algorithm_o.display_name : "human" %></td>
+    <td><%= board.game_over? ? "yes" : "no" %></td>
+    <td><%= board.winner ? board.winner.upcase : "cats" %></td>
+    <td><%=h board.history ? board.history.length : 0 %> bytes</td>
+	<td><%=h time_ago_in_words(board.created_at)%> ago</td>
+    <td><%= link_to 'Show', board_path(board) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Play a new game!', new_board_path %>

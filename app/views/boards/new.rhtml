@@ -1,0 +1,21 @@
+<h1>New board</h1>
+
+<%= error_messages_for :board %>
+
+<% form_for(:board, :url => boards_path) do |f| %>
+  <p>
+    <b>Algorithm "X"</b><br />
+    <%= f.collection_select :algorithm_x_id, Algorithm.find(:all), :id, :display_name, :include_blank => true %> (blank for human)
+  </p>
+
+  <p>
+    <b>Algorithm "O"</b><br />
+    <%= f.collection_select :algorithm_o_id, Algorithm.find(:all), :id, :display_name, :include_blank => true %> (blank for human)
+  </p>
+
+  <p>
+    <%= submit_tag "Begin" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', boards_path %>

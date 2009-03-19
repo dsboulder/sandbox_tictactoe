@@ -1,0 +1,14 @@
+<% matrix = board.move_matrix %>
+<table cellpadding="3" cellspacing="0" border="1">
+	<% 0.upto(2) do |y| %>
+	<tr>
+		<% 0.upto(2) do |x| %>		
+		<td>
+			<div style="width: 30px; height: 30px">
+				<%= matrix[x][y].upcase %>
+			</div>
+		</td>
+		<% end %>
+	</tr>
+	<% end %>
+</table>

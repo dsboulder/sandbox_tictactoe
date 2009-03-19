@@ -1,0 +1,20 @@
+<% board = play_board %>
+<% matrix = board.move_matrix %>
+<% my_turn = !board.game_over? && (board.turn == "x" && board.algorithm_x.nil? || board.turn == "o" && board.algorithm_o.nil?)%>
+<table cellpadding="3" cellspacing="0" border="1">
+	<% 0.upto(2) do |y| %>
+	<tr>
+		<% 0.upto(2) do |x| %>		
+		<td>
+			<div style="width: 30px; height: 30px">
+				<% if my_turn && matrix[x][y] == "" %>
+					<%= button_to board.turn.upcase, move_board_path(:id => @board, :x_pos => x, :y_pos => y) %>
+				<% else %>
+					<%= matrix[x][y].upcase %>
+				<% end %>
+			</div>
+		</td>
+		<% end %>
+	</tr>
+	<% end %>
+</table>

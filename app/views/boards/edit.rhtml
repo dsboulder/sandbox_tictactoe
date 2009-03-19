@@ -1,0 +1,33 @@
+<h1>Playing board</h1>
+
+<%= error_messages_for :board %>
+
+<p>
+  <b>Algorithm "X":</b>
+  <%=h @board.algorithm_x ? @board.algorithm_x.display_name : "human" %>
+</p>
+
+<p>
+  <b>Algorithm "O":</b>
+  <%=h @board.algorithm_o ? @board.algorithm_o.display_name : "human" %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <% if @board.game_over? %>
+	Game Over!  Winner: <%= @board.winner || "cat's game"%>
+  <% else %>
+	<%= @board.turn.upcase%>'s turn
+  <% end %>
+</p>
+
+<%= render :partial => "play_board", :object => @board %>
+
+<p><%= @board.move_matrix.inspect %></p>
+
+<p>
+  <b>History:</b><br/>
+  <%=h(@board.history).gsub("\n", "<br/>") %>
+</p>
+
+<%= link_to 'Back', boards_path %>

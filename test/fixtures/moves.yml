@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+one:
+  id: 1
+  board_id: 1
+  x_pos: 1
+  y_pos: 1
+  is_x: false
+  created_at: 2007-10-16 19:08:17
+two:
+  id: 2
+  board_id: 1
+  x_pos: 1
+  y_pos: 1
+  is_x: false
+  created_at: 2007-10-16 19:08:17
